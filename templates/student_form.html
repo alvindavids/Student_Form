@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Form</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .form-card {
+        width: 420px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    label {
+        font-size: 14px;
+        color: #555;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+    }
+
+    textarea {
+        resize: none;
+        height: 90px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 25px;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="form-card">
+    <h2>Student Inquiry</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="number" placeholder="Enter phone number" maxlength="15" required>
+
+        <label>Course</label>
+        <select name="degree" title="Course Selection" required>
+            <option value="">Select Course</option>
+            <option>BCA</option>
+            <option>BSc IT</option>
+            <option>BTech</option>
+            <option>MCA</option>
+            <option>MSc IT</option>
+            <option>MBA</option>
+        </select>
+
+        <label>Your Query</label>
+        <textarea name="query" placeholder="Type your query here..." required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
